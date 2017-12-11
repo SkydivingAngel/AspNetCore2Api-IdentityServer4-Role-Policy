@@ -1,0 +1,69 @@
+﻿             //services.AddMvcCore()
+            //    .AddAuthorization()
+            //    .AddJsonFormatters();
+
+            //services.AddAuthentication("Bearer")
+            //    .AddIdentityServerAuthentication(options =>
+            //    {
+            //        options.Authority = "https://wksang.gaspariinformatica.it/identityserver";
+            //        options.RequireHttpsMetadata = true;
+            //        options.ApiName = "api1";
+            //        options.JwtValidationClockSkew = TimeSpan.Zero;
+            //    });
+
+
+            //OPPURE
+
+            services.AddMvc();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = "https://wksang.gaspariinformatica.it/identityserver";
+                options.Audience = "api1";
+                options.RequireHttpsMetadata = true;
+                //options.Configuration = new OpenIdConnectConfiguration(); // <-- NON SERVE
+            });
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+				//options.Configuration = new OpenIdConnectConfiguration();
+                //options.Configuration = new OpenIdConnectConfiguration
+                //{
+                //    Issuer = "https://localhost/identityserver",
+                //    JwksUri = "https://localhost/identityserver/.well-known/openid-configuration/jwks",
+                //    AuthorizationEndpoint = "https://localhost/identityserver/connect/authorize",
+                //    TokenEndpoint = "https://localhost/identityserver/connect/token",
+                //    //UserInfoEndpoint = "https://localhost/connect/userinfo",
+                //    //EndSessionEndpoint = "https://localhost/connect/endsession",
+                //    //CheckSessionIframe = "https://localhost/connect/checksession",
+                //    //HttpLogoutSupported = true,
+                //    //LogoutSessionSupported = true,
+                //};
+                //options.TokenValidationParameters = new TokenValidationParameters
+                //{
+                //    //ValidateIssuerSigningKey = true,
+                //    ClockSkew = TimeSpan.Zero,
+                //    //ValidIssuer = "http://localhost/identityserver",
+                //    //ValidateIssuer = true,
+                //    //ValidAudience = "http://localhost/identityserverclient",
+                //    //ValidateAudience = true,
+                //    //ValidateLifetime = true
+                //};
